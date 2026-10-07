@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="es-MX" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- Clase "js" + bloqueo de scroll durante el loader. Incluye un seguro de 9 s por si app.js no carga. -->
+<script>
+  (function (d) {
+    d.className = 'js is-loading';
+    setTimeout(function () { d.classList.remove('is-loading'); }, 9000);
+  })(document.documentElement);
+</script>
+
+<!-- ══════════ SEO ══════════ -->
+<title>Tours de playa en Puerto Vallarta | Tours Emotions</title>
+<meta name="description" content="Tours de playa en Puerto Vallarta: Los Arcos, Ánimas y Quimixto, Yelapa y Majagüitas y Ritmos de la Noche. Desayuno, comida y barra libre. Reserva por WhatsApp.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Tours Emotions">
+<meta name="theme-color" content="#050B16">
+<meta name="color-scheme" content="dark">
+<!-- Al publicar: agrega <link rel="canonical" href="https://TU-DOMINIO.com/"> y cambia og:image por una URL absoluta -->
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="Tours Emotions">
+<meta property="og:title" content="Tours de playa en Puerto Vallarta | Tours Emotions">
+<meta property="og:description" content="Snorkel en Los Arcos, cascadas en Quimixto, playas que solo se alcanzan por mar y una noche de cena y show en Las Caletas. Reserva tu fecha por WhatsApp.">
+<meta property="og:image" content="img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Los Arcos, formación de roca en el mar de Puerto Vallarta">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tours de playa en Puerto Vallarta | Tours Emotions">
+<meta name="twitter:description" content="Los Arcos, Quimixto, Yelapa y Ritmos de la Noche con desayuno, comida y barra libre.">
+<meta name="twitter:image" content="img/og-cover.jpg">
+
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/favicon.svg">
+
+<!-- Recursos: fuentes (Geist) e iconos (Phosphor) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="preload" as="image" href="img/tours/atardecer-1200.webp" fetchpriority="high">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+
+<!-- ══════════ DATOS ESTRUCTURADOS ══════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TravelAgency",
+      "@id": "#tours-emotions",
+      "name": "Tours Emotions",
+      "description": "Experiencias y tours de playa en Puerto Vallarta, Jalisco: Los Arcos, Playa Ánimas, Quimixto, Yelapa, Majagüitas y Ritmos de la Noche.",
+      "areaServed": { "@type": "City", "name": "Puerto Vallarta" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Puerto Vallarta", "addressRegion": "Jalisco", "addressCountry": "MX" },
+      "priceRange": "$1,200 - $3,600 MXN",
+      "knowsLanguage": "es"
+    },
+    {
+      "@type": "TouristTrip",
+      "name": "Los Arcos, Ánimas y Quimixto",
+      "description": "Paseo en catamarán con snorkel en Los Arcos, comida en Playa Ánimas y caminata a la cascada de Quimixto. Incluye desayuno, comida y barra libre.",
+      "provider": { "@id": "#tours-emotions" },
+      "offers": { "@type": "Offer", "price": "1200", "priceCurrency": "MXN", "availability": "https://schema.org/InStock" }
+    },
+    {
+      "@type": "TouristTrip",
+      "name": "Yelapa y Majagüitas",
+      "description": "Dos playas de la costa sur de Puerto Vallarta a las que solo se llega por mar. Incluye desayuno, comida y barra libre.",
+      "provider": { "@id": "#tours-emotions" },
+      "offers": { "@type": "Offer", "price": "1400", "priceCurrency": "MXN", "availability": "https://schema.org/InStock" }
+    },
+    {
+      "@type": "TouristTrip",
+      "name": "Ritmos de la Noche",
+      "description": "Crucero al atardecer, cena gourmet frente al mar y el espectáculo ALMA en Las Caletas. Duración aproximada de 5 horas.",
+      "provider": { "@id": "#tours-emotions" },
+      "offers": { "@type": "Offer", "price": "3600", "priceCurrency": "MXN", "availability": "https://schema.org/InStock" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué incluyen los tours?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Los tours de día incluyen desayuno, comida y barra libre. Ritmos de la Noche incluye paseo en catamarán al atardecer con barra libre a bordo, cena gourmet frente al mar, barra libre premium durante la cena y el espectáculo ALMA." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuestan los tours?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Los Arcos, Ánimas y Quimixto cuesta $1,200 MXN por persona. Yelapa y Majagüitas cuesta $1,400 MXN por persona. Ritmos de la Noche cuesta $3,600 MXN por persona. El barco pirata tiene precio a consultar." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo reservo mi tour?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Elige tu tour, la fecha y cuántas personas van en el formulario. Se abre WhatsApp con tu solicitud lista y te confirmamos disponibilidad, horario y punto de encuentro." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto dura Ritmos de la Noche?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Dura aproximadamente 5 horas. Hay que llegar 45 minutos antes de la salida." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿A qué hora salen los tours y dónde es el punto de encuentro?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Depende del tour y de la fecha. Al enviar tu solicitud por WhatsApp te confirmamos horario, punto de encuentro y disponibilidad." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Puedo ir con niños?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Cuéntanos la edad de los niños en tu mensaje y te confirmamos tarifas y condiciones de cada tour." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa si el clima no deja salir?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Te explicamos las condiciones de cambio y cancelación al momento de cotizar, antes de confirmar tu lugar." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+
+<!-- Sprite: marca (sol sobre olas) reutilizable con <use href="#mark"> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gMark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5FE3D3"/>
+      <stop offset="1" stop-color="#FF8F3F"/>
+    </linearGradient>
+    <linearGradient id="gSun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFB661"/>
+      <stop offset="1" stop-color="#FF8F3F"/>
+    </linearGradient>
+  </defs>
+  <symbol id="mark" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="21" fill="none" stroke="url(#gMark)" stroke-width="2.2"/>
+    <path d="M16.5 22a7.5 7.5 0 0 1 15 0z" fill="url(#gSun)"/>
+    <path d="M10 26q3.5-4 7 0t7 0t7 0t7 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M13 33q3-3.2 6 0t6 0t6 0t6 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".6"/>
+  </symbol>
+</svg>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- ═══════════════════════ LOADER ═══════════════════════ -->
+<div class="loader" id="loader" role="status" aria-live="polite" aria-label="Cargando Tours Emotions">
+  <div class="loader-core">
+    <div class="loader-orb">
+      <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="gRing" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#5FE3D3"/>
+            <stop offset="1" stop-color="#FF8F3F"/>
+          </linearGradient>
+          <clipPath id="orbClip"><circle cx="100" cy="100" r="64"/></clipPath>
+        </defs>
+        <circle class="ring-track" cx="100" cy="100" r="88"/>
+        <circle class="ring-spin" cx="100" cy="100" r="88"/>
+        <circle class="ring-prog" id="ringProg" cx="100" cy="100" r="88"/>
+        <g clip-path="url(#orbClip)">
+          <circle cx="100" cy="100" r="64" fill="rgba(95,227,211,.06)"/>
+          <g id="orbWaves">
+            <path class="wave wave-b" d="M-100 24q25-14 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0V260H-100z"/>
+            <path class="wave wave-a" d="M-100 24q25-14 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0V260H-100z"/>
+          </g>
+        </g>
+        <circle class="orb-edge" cx="100" cy="100" r="64"/>
+      </svg>
+      <svg class="loader-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
+    </div>
+    <p class="loader-pct"><span id="loaderPct">0</span><small>%</small></p>
+    <p class="loader-label" id="loaderLabel">Preparando tu zarpe</p>
+  </div>
+  <div class="loader-curtain loader-curtain--a"></div>
+  <div class="loader-curtain loader-curtain--b"></div>
+</div>
+
+<!-- ═══════════════════════ NAVEGACIÓN ═══════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav-bar">
+    <a class="brand" href="#inicio" aria-label="Tours Emotions, ir al inicio">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
+      <span class="brand-word"><span>Tours</span><b>Emotions</b></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Principal">
+      <a href="#tours">Tours</a>
+      <a href="#dia">Día en el mar</a>
+      <a href="#noche">Ritmos de la Noche</a>
+      <a href="#ruta">La ruta</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+
+    <a class="btn btn-sun btn-sm nav-cta" href="#reservar" data-magnetic>Reservar</a>
+
+    <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="scroll-bar" aria-hidden="true"><i id="scrollBar"></i></div>
+</header>
+
+<!-- Menú móvil -->
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu-nav" aria-label="Menú móvil">
+    <a href="#tours">Tours</a>
+    <a href="#dia">Día en el mar</a>
+    <a href="#noche">Ritmos de la Noche</a>
+    <a href="#ruta">La ruta</a>
+    <a href="#galeria">Galería</a>
+    <a href="#faq">Preguntas</a>
+  </nav>
+  <div class="menu-foot">
+    <a class="btn btn-sun btn-block" href="#reservar">Quiero mi lugar</a>
+    <a class="btn btn-ghost btn-block" href="https://wa.me/" target="_blank" rel="noopener" data-wa data-wa-msg="Hola, quiero información de sus tours de playa en Puerto Vallarta.">
+      <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i> Escribir por WhatsApp
+    </a>
+  </div>
+</div>
+
+<main id="contenido">
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero" id="inicio" aria-labelledby="hero-title">
+  <div class="hero-media" aria-hidden="true">
+    <div class="hero-slide is-active" data-place="Puerto Vallarta al atardecer">
+      <img src="img/tours/atardecer-1200.webp" alt="" width="1200" height="800" fetchpriority="high" decoding="async">
+    </div>
+    <div class="hero-slide" data-place="Los Arcos">
+      <img src="img/tours/los-arcos-1200.webp" alt="" width="1200" height="792" decoding="async">
+    </div>
+    <div class="hero-slide" data-place="Yelapa">
+      <img src="img/tours/yelapa-1200.webp" alt="" width="1200" height="800" decoding="async">
+    </div>
+    <canvas class="hero-caustics" id="caustics"></canvas>
+    <canvas class="hero-particles" id="heroParticles"></canvas>
+    <div class="hero-shade"></div>
+  </div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy" data-parallax-out>
+      <p class="eyebrow hero-in">Tours de playa en Puerto Vallarta</p>
+      <h1 class="hero-title" id="hero-title">
+        <span class="hl"><span class="w">Vive</span> <span class="w">la</span> <span class="w">bahía</span></span>
+        <span class="hl"><span class="w">desde</span> <span class="w">el</span> <span class="w w-sun">mar.</span></span>
+      </h1>
+      <p class="hero-sub hero-in">Catamarán, snorkel, cascadas y noches con show en vivo. Desayuno, comida y barra libre incluidos.</p>
+      <div class="hero-cta hero-in">
+        <a class="btn btn-sun btn-lg" href="#reservar" data-magnetic>
+          <span>Quiero mi día en el mar</span><i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a class="btn btn-ghost btn-lg" href="#tours"><span>Ver los tours</span></a>
+      </div>
+    </div>
+
+    <ul class="hero-chips hero-in" aria-label="Tours disponibles">
+      <li>
+        <a class="chip glass" href="#tours" data-goto-tour="arcos" data-tilt>
+          <img src="img/tours/los-arcos-1200.webp" alt="" width="96" height="96" loading="lazy" decoding="async">
+          <span class="chip-text"><b>Los Arcos, Ánimas y Quimixto</b><small>Desde $1,200 MXN</small></span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li>
+        <a class="chip glass" href="#tours" data-goto-tour="yelapa" data-tilt>
+          <img src="img/tours/yelapa-1200.webp" alt="" width="96" height="96" loading="lazy" decoding="async">
+          <span class="chip-text"><b>Yelapa y Majagüitas</b><small>$1,400 MXN</small></span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li>
+        <a class="chip glass" href="#tours" data-goto-tour="noche" data-tilt>
+          <img src="img/tours/caletas-velas-568.webp" alt="" width="96" height="96" loading="lazy" decoding="async">
+          <span class="chip-text"><b>Ritmos de la Noche</b><small>$3,600 MXN</small></span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li>
+        <a class="chip glass" href="#tours" data-goto-tour="pirata" data-tilt>
+          <img src="img/tours/pirata-fuegos-554.webp" alt="" width="96" height="96" loading="lazy" decoding="async">
+          <span class="chip-text"><b>Barco pirata</b><small>Precio a consultar</small></span>
+          <i class="ph ph-arrow-up-right" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="hero-ui" aria-hidden="true">
+    <div class="hero-bars" id="heroBars">
+      <button type="button" class="is-active" tabindex="-1"><i></i><span>Atardecer</span></button>
+      <button type="button" tabindex="-1"><i></i><span>Los Arcos</span></button>
+      <button type="button" tabindex="-1"><i></i><span>Yelapa</span></button>
+    </div>
+  </div>
+
+  <div class="hero-badge" aria-hidden="true">
+    <svg viewBox="0 0 160 160" focusable="false">
+      <defs><path id="badgePath" d="M80 80m-62 0a62 62 0 1 1 124 0a62 62 0 1 1-124 0"/></defs>
+      <text><textPath href="#badgePath" startOffset="0">TOURS DE PLAYA &#8226; PUERTO VALLARTA &#8226; BAHÍA DE BANDERAS &#8226;</textPath></text>
+    </svg>
+    <i class="ph ph-sailboat"></i>
+  </div>
+</section>
+
+<!-- ═══════════════════════ MARQUEE (único de la página) ═══════════════════════ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marquee">
+    <span>Desayuno incluido</span><i class="ph-fill ph-star-four"></i>
+    <span>Comida frente al mar</span><i class="ph-fill ph-star-four"></i>
+    <span>Barra libre</span><i class="ph-fill ph-star-four"></i>
+    <span>Snorkel en Los Arcos</span><i class="ph-fill ph-star-four"></i>
+    <span>Kayak y paddle board</span><i class="ph-fill ph-star-four"></i>
+    <span>Cena gourmet en Las Caletas</span><i class="ph-fill ph-star-four"></i>
+    <span>Show ALMA en vivo</span><i class="ph-fill ph-star-four"></i>
+  </div>
+</div>
+
+<!-- ═══════════════════════ DECLARACIÓN + CIFRAS ═══════════════════════ -->
+<section class="statement" id="experiencia" aria-labelledby="statement-title">
+  <h2 class="sr-only" id="statement-title">Una experiencia completa en la Bahía de Banderas</h2>
+  <div class="statement-pin" id="statementPin">
+    <div class="statement-sticky">
+      <div class="wrap">
+        <p class="statement-text" id="statementText">No es un paseo en lancha. Es un día completo en la bahía: <b>snorkel</b> entre arcos de roca, comida frente al mar, <b>cascadas</b> escondidas y, cuando cae la noche, un <b>show en vivo</b> entre miles de velas.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <ul class="facts">
+      <li data-reveal style="--i:0"><strong><span data-count="4">4</span></strong><span>experiencias para elegir</span></li>
+      <li data-reveal style="--i:1"><strong><span data-count="1200" data-prefix="$">$1,200</span></strong><span>MXN por persona, desde</span></li>
+      <li data-reveal style="--i:2"><strong><span data-count="3">3</span></strong><span>paradas en Los Arcos, Ánimas y Quimixto</span></li>
+      <li data-reveal style="--i:3"><strong><span data-count="5" data-suffix=" h">5 h</span></strong><span>de noche mágica en Las Caletas, aprox.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TOURS (pan horizontal en desktop) ═══════════════════════ -->
+<section class="tours" id="tours" aria-labelledby="tours-title">
+  <div class="tours-pin" id="toursPin">
+    <div class="tours-sticky">
+      <header class="tours-head wrap">
+        <h2 id="tours-title" data-reveal>Elige tu día en el mar</h2>
+        <p data-reveal style="--i:1">Todos los tours de día incluyen desayuno, comida y barra libre. Tú solo llegas con ganas.</p>
+      </header>
+
+      <div class="tours-viewport">
+        <div class="tours-track" id="toursTrack">
+
+          <!-- Tour 1 -->
+          <article class="panel" id="tour-arcos" data-tour="arcos" data-spot>
+            <div class="panel-media"><img src="img/tours/los-arcos-1200.webp" alt="Los Arcos, islotes de roca en el mar de Puerto Vallarta, ideales para snorkel" width="1200" height="792" loading="lazy" decoding="async"></div>
+            <div class="panel-body">
+              <p class="panel-kicker">Tour de día, 3 paradas</p>
+              <h3>Los Arcos, Ánimas y Quimixto</h3>
+              <p class="panel-hook">Maravillas submarinas y cascadas escondidas.</p>
+              <p class="panel-desc">Snorkel entre las formaciones de Los Arcos, comida frente al mar en Playa Ánimas y caminata por la selva hasta la cascada de Quimixto, con ambiente festivo y barra libre a bordo.</p>
+              <ul class="chips">
+                <li>Catamarán</li><li>Desayuno</li><li>Comida</li><li>Barra libre nacional</li><li>Snorkel y kayak</li><li>Paddle board</li>
+              </ul>
+              <div class="panel-foot">
+                <p class="price"><strong data-count="1200" data-prefix="$">$1,200</strong><small>MXN por persona</small></p>
+                <div class="panel-actions">
+                  <a class="btn btn-sun" href="#reservar" data-pick="arcos"><span>Quiero este día en el mar</span></a>
+                  <a class="btn btn-ghost" href="#dia"><span>Ver el día completo</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tour 2 -->
+          <article class="panel" id="tour-yelapa" data-tour="yelapa" data-spot>
+            <div class="panel-media"><img src="img/tours/yelapa-1200.webp" alt="Ensenada de Yelapa vista desde lo alto, con playa en media luna y agua turquesa" width="1200" height="800" loading="lazy" decoding="async"></div>
+            <div class="panel-body">
+              <p class="panel-kicker">Tour de día, dos playas</p>
+              <h3>Yelapa y Majagüitas</h3>
+              <p class="panel-hook">Dos playas a las que solo se llega por mar.</p>
+              <p class="panel-desc">Cruza la bahía hasta Yelapa y Majagüitas, dos rincones de la costa sur que únicamente se alcanzan en barco. Itinerario y horarios te los confirmamos por WhatsApp.</p>
+              <ul class="chips">
+                <li>Desayuno</li><li>Comida</li><li>Barra libre</li>
+              </ul>
+              <div class="panel-foot">
+                <p class="price"><strong data-count="1400" data-prefix="$">$1,400</strong><small>MXN por persona</small></p>
+                <div class="panel-actions">
+                  <a class="btn btn-sun" href="#reservar" data-pick="yelapa"><span>Quiero conocer Yelapa</span></a>
+                  <a class="btn btn-ghost" href="https://wa.me/" target="_blank" rel="noopener" data-wa data-wa-msg="Hola, me gustaría recibir el itinerario del tour Yelapa y Majagüitas."><span>Pedir el itinerario</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tour 3 -->
+          <article class="panel panel--night" id="tour-noche" data-tour="noche" data-spot>
+            <div class="panel-media"><img src="img/tours/caletas-velas-568.webp" alt="Hacienda de Las Caletas de noche, iluminada con cientos de velas entre la vegetación" width="568" height="568" loading="lazy" decoding="async"></div>
+            <div class="panel-body">
+              <p class="panel-kicker">Tour nocturno, aprox. 5 horas</p>
+              <h3>Ritmos de la Noche</h3>
+              <p class="panel-hook">Cena y el show ALMA en Las Caletas, solo se llega por mar.</p>
+              <p class="panel-desc">Crucero al atardecer, caminata entre miles de velas, cena gourmet frente al mar y un espectáculo en vivo con acrobacias, música y danza en plena selva.</p>
+              <ul class="chips">
+                <li>Catamarán al atardecer</li><li>Barra libre a bordo</li><li>Cena gourmet</li><li>Barra libre premium</li><li>Show ALMA</li>
+              </ul>
+              <div class="panel-foot">
+                <p class="price"><strong data-count="3600" data-prefix="$">$3,600</strong><small>MXN por persona</small></p>
+                <div class="panel-actions">
+                  <a class="btn btn-sun" href="#reservar" data-pick="noche"><span>Quiero mi noche en Las Caletas</span></a>
+                  <a class="btn btn-ghost" href="#noche"><span>Ver la noche completa</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Tour 4 -->
+          <article class="panel panel--pirate" id="tour-pirata" data-tour="pirata" data-spot>
+            <div class="panel-media"><img src="img/tours/pirata-fuegos-554.webp" alt="Show nocturno en el barco pirata con fuegos artificiales y luces moradas" width="554" height="554" loading="lazy" decoding="async"></div>
+            <div class="panel-body">
+              <p class="panel-kicker">Experiencia a bordo</p>
+              <h3>Barco pirata</h3>
+              <p class="panel-hook">Show, fiesta y tripulación pirata a bordo.</p>
+              <p class="panel-desc">Sube a un barco pirata con tripulación en vivo, música y mucha fiesta. Pídenos precio, fechas y horarios y te respondemos por WhatsApp.</p>
+              <ul class="chips">
+                <li>Show a bordo</li><li>Tripulación pirata</li><li>Fiesta</li>
+              </ul>
+              <div class="panel-foot">
+                <p class="price price--ask"><strong>Precio a consultar</strong><small>Te respondemos por WhatsApp</small></p>
+                <div class="panel-actions">
+                  <a class="btn btn-sun" href="https://wa.me/" target="_blank" rel="noopener" data-wa data-wa-msg="Hola, quiero saber precio, fechas y horarios del barco pirata."><span>Quiero saber del barco pirata</span></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Cierre del carrusel: ayuda para elegir -->
+          <article class="panel panel--help" data-spot>
+            <div class="panel-body panel-body--solo">
+              <i class="ph ph-compass panel-help-icon" aria-hidden="true"></i>
+              <h3>¿Aún no decides?</h3>
+              <p class="panel-desc">Cuéntanos cuándo vienes y con quién. Te recomendamos el tour que mejor encaja con tu grupo y tu fecha.</p>
+              <a class="btn btn-sun btn-lg" href="https://wa.me/" target="_blank" rel="noopener" data-wa data-wa-msg="Hola, aún no sé qué tour elegir. ¿Me ayudan a escoger el ideal para mi fecha?">
+                <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i><span>Ayúdame a elegir</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="tours-progress" aria-hidden="true"><i id="toursProgress"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ UN DÍA EN EL MAR (secuencia tipo Remotion, controlada por scroll) ═══════════════════════ -->
+<section class="seq" id="dia" aria-labelledby="dia-title">
+  <div class="seq-pin" id="seqPin">
+    <div class="seq-sticky">
+      <div class="seq-bg" aria-hidden="true">
+        <img class="seq-img" src="img/tours/velero-1200.webp" alt="" width="1200" height="900" loading="lazy" decoding="async">
+        <img class="seq-img" src="img/tours/bahia-1600.webp" alt="" width="1600" height="800" loading="lazy" decoding="async">
+        <img class="seq-img" src="img/tours/los-arcos-1200.webp" alt="" width="1200" height="792" loading="lazy" decoding="async">
+        <img class="seq-img" src="img/tours/las-animas-1200.webp" alt="" width="1200" height="797" loading="lazy" decoding="async">
+        <img class="seq-img" src="img/tours/atardecer-1200.webp" alt="" width="1200" height="800" loading="lazy" decoding="async">
+        <div class="seq-shade"></div>
+      </div>
+
+      <div class="seq-word" aria-hidden="true"><span id="seqWord">EMBARQUE&nbsp;&nbsp;BAHÍA&nbsp;&nbsp;SNORKEL&nbsp;&nbsp;CASCADA&nbsp;&nbsp;FIESTA&nbsp;&nbsp;</span></div>
+
+      <div class="wrap seq-ui">
+        <header class="seq-head">
+          <p class="eyebrow">Los Arcos, Ánimas y Quimixto</p>
+          <h2 id="dia-title">Así se vive un día en el mar</h2>
+        </header>
+
+        <ol class="seq-scenes" id="seqScenes">
+          <li class="scene">
+            <h3>Encuentro y embarque</h3>
+            <p>Llegas a nuestras instalaciones en Puerto Vallarta para el check-in. Te damos la bienvenida y subes a uno de nuestros cómodos catamaranes.</p>
+          </li>
+          <li class="scene">
+            <h3>La zona sur de la bahía</h3>
+            <p>Navegamos por tres de los puntos más pintorescos del sur del puerto, con vistas a la costa y a la majestuosidad del Pacífico.</p>
+          </li>
+          <li class="scene">
+            <h3>Snorkel en Los Arcos</h3>
+            <p>Tiempo para una sesión de snorkel en las aguas transparentes que rodean las formaciones rocosas, entre peces y vida marina.</p>
+          </li>
+          <li class="scene">
+            <h3>Comida, barra libre y cascada</h3>
+            <p>Comida servida en una de las playas más hermosas del sur, barra libre bajo el sol y un sendero hacia las cascadas escondidas.</p>
+          </li>
+          <li class="scene">
+            <h3>Regreso con fiesta y premios</h3>
+            <p>Volvemos a la Terminal Marítima con música y concursos. El ambiente festivo no se detiene hasta bajar del barco.</p>
+          </li>
+        </ol>
+
+        <div class="seq-foot">
+          <div class="seq-timeline" aria-hidden="true">
+            <i class="seq-fill" id="seqFill"></i>
+            <span>Embarque</span><span>Bahía sur</span><span>Snorkel</span><span>Playa y cascada</span><span>Regreso</span>
+          </div>
+          <a class="btn btn-sun" href="#reservar" data-pick="arcos" data-magnetic><span>Quiero vivir este día</span><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ INCLUYE (bento) ═══════════════════════ -->
+<section class="includes" id="incluye" aria-labelledby="inc-title">
+  <div class="wrap">
+    <h2 id="inc-title" data-reveal>Todo resuelto, desde el desayuno</h2>
+    <p class="lead" data-reveal style="--i:1">Tú disfrutas. Nosotros nos encargamos de navegar, comer y brindar. Esto incluyen los tours de día.</p>
+
+    <div class="bento">
+      <article class="b b-cat" data-reveal data-spot>
+        <img src="img/tours/velero-1200.webp" alt="Velero navegando frente a la costa de Puerto Vallarta" width="1200" height="900" loading="lazy" decoding="async">
+        <div class="b-in">
+          <i class="ph ph-sailboat" aria-hidden="true"></i>
+          <h3>Paseo en catamarán</h3>
+          <p>Navegas por la bahía en un cómodo catamarán, con música y ambiente festivo a bordo.</p>
+        </div>
+      </article>
+
+      <article class="b b-desa b-grad" data-reveal style="--i:1" data-spot>
+        <div class="b-in">
+          <i class="ph ph-coffee" aria-hidden="true"></i>
+          <h3>Desayuno</h3>
+          <p>Para arrancar el día con energía.</p>
+        </div>
+      </article>
+
+      <article class="b b-comida" data-reveal style="--i:2" data-spot>
+        <img src="img/tours/las-animas-1200.webp" alt="Playa de arena y rocas en la costa sur de Puerto Vallarta con agua turquesa" width="1200" height="797" loading="lazy" decoding="async">
+        <div class="b-in">
+          <i class="ph ph-fork-knife" aria-hidden="true"></i>
+          <h3>Comida frente al mar</h3>
+          <p>Servida en una de las playas más hermosas de la zona sur.</p>
+        </div>
+      </article>
+
+      <article class="b b-barra b-glass" data-reveal style="--i:2" data-spot>
+        <div class="b-in">
+          <i class="ph ph-wine" aria-hidden="true"></i>
+          <h3>Barra libre</h3>
+          <p>Para refrescarte bajo el sol, a bordo y en la playa.</p>
+        </div>
+      </article>
+
+      <article class="b b-water" data-reveal style="--i:3" data-spot>
+        <img src="img/tours/kayak-1200.webp" alt="Vista desde un kayak remando en la bahía de Puerto Vallarta" width="1200" height="900" loading="lazy" decoding="async">
+        <div class="b-in">
+          <i class="ph ph-person-simple-swim" aria-hidden="true"></i>
+          <h3>Snorkel, kayak y paddle board</h3>
+          <p>Actividades acuáticas para meterte al agua cuando quieras.</p>
+        </div>
+      </article>
+
+      <article class="b b-party b-grad b-grad--night" data-reveal style="--i:4" data-spot>
+        <div class="b-in">
+          <i class="ph ph-confetti" aria-hidden="true"></i>
+          <h3>Fiesta y concursos</h3>
+          <p>Música y premios en el viaje de regreso.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ RITMOS DE LA NOCHE ═══════════════════════ -->
+<section class="night" id="noche" aria-labelledby="noche-title">
+  <canvas class="night-embers" id="embers" aria-hidden="true"></canvas>
+  <div class="night-bgword" aria-hidden="true"><span id="nightWord">RITMOS DE LA NOCHE</span></div>
+
+  <div class="wrap night-grid">
+    <figure class="night-fig" data-reveal="scale">
+      <div class="arch">
+        <img src="img/tours/alma-aerea-750.webp" alt="Acróbata suspendida en el aire durante el espectáculo ALMA en Las Caletas" width="750" height="1132" loading="lazy" decoding="async" data-parallax="-0.08">
+      </div>
+      <img class="night-fig-b" src="img/tours/caletas-atardecer-1200.webp" alt="Playa de Las Caletas al atardecer con un artista caracterizado de jaguar" width="1200" height="800" loading="lazy" decoding="async">
+    </figure>
+
+    <div class="night-copy">
+      <h2 id="noche-title" data-reveal>Ritmos de la Noche</h2>
+      <p class="night-hook" data-reveal style="--i:1">Un viaje por mar a una hacienda frente al océano, iluminada por miles de velas.</p>
+      <p data-reveal style="--i:2">Se llega únicamente por mar, entre Yelapa y Quimixto, a la histórica hacienda del legendario cineasta John Huston. Una experiencia enraizada en las tradiciones de Jalisco y la costa del Pacífico Mexicano.</p>
+
+      <ol class="night-steps" data-reveal style="--i:3">
+        <li><b>Crucero al atardecer</b><span>Catamarán con barra libre a bordo. En invierno, a veces se ven ballenas.</span></li>
+        <li><b>Llegada iluminada</b><span>Senderos en la selva alumbrados con velas y antorchas.</span></li>
+        <li><b>Cena gourmet frente al mar</b><span>Sabores del Pacífico Mexicano, dirigidos por el chef Paco Ruano.</span></li>
+        <li><b>El espectáculo ALMA</b><span>Acrobacias, música en vivo y danza que celebran rituales ancestrales.</span></li>
+        <li><b>Regreso festivo</b><span>Música y ambiente de fiesta en el viaje de vuelta.</span></li>
+      </ol>
+
+      <ul class="night-facts" data-reveal style="--i:4">
+        <li><i class="ph ph-clock" aria-hidden="true"></i><span>Aprox. 5 horas</span></li>
+        <li><i class="ph ph-map-pin" aria-hidden="true"></i><span>Llegar 45 min antes</span></li>
+        <li><i class="ph ph-sailboat" aria-hidden="true"></i><span>Operado por Vallarta Adventures</span></li>
+      </ul>
+
+      <div class="night-credits" data-reveal style="--i:5">
+        <h3>Detrás de la noche</h3>
+        <ul>
+          <li><b>Paco Ruano</b> chef de Alcalde, top 5 de México, dirige la cena.</li>
+          <li><b>Mukhtar Mukhtar</b> director de ALMA, detrás de producciones como Messi 10 y el Super Bowl Halftime Show.</li>
+          <li><b>Eugenio Caballero</b> diseñador de producción ganador del Óscar.</li>
+          <li><b>Debra Brown y René Dupéré</b> coreógrafa y compositor ganadores del Emmy, de trece producciones del Cirque du Soleil.</li>
+        </ul>
+      </div>
+
+      <div class="night-foot" data-reveal style="--i:6">
+        <p class="price"><strong data-count="3600" data-prefix="$">$3,600</strong><small>MXN por persona</small></p>
+        <a class="btn btn-sun btn-lg" href="#reservar" data-pick="noche" data-magnetic><span>Quiero mi noche en Las Caletas</span><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ LA RUTA (SVG que se dibuja con el scroll) ═══════════════════════ -->
+<section class="route" id="ruta" aria-labelledby="ruta-title">
+  <div class="wrap route-grid">
+    <div class="route-copy">
+      <p class="eyebrow" data-reveal>La ruta</p>
+      <h2 id="ruta-title" data-reveal style="--i:1">Una bahía, seis paradas</h2>
+      <p data-reveal style="--i:2">Desde Puerto Vallarta hacia el sur, entre selva, rocas y playas a las que solo se llega por mar.</p>
+      <ol class="route-list" id="routeList">
+        <li data-at="0.04" data-reveal style="--i:3"><b>Puerto Vallarta</b><span>Punto de salida y bienvenida a bordo.</span></li>
+        <li data-at="0.22" data-reveal style="--i:4"><b>Los Arcos</b><span>Snorkel entre formaciones de roca.</span></li>
+        <li data-at="0.38" data-reveal style="--i:5"><b>Playa Ánimas</b><span>Comida frente al mar y barra libre.</span></li>
+        <li data-at="0.54" data-reveal style="--i:6"><b>Quimixto</b><span>Sendero por la selva hasta la cascada.</span></li>
+        <li data-at="0.70" data-reveal style="--i:7"><b>Las Caletas</b><span>Cena y show ALMA bajo las velas.</span></li>
+        <li data-at="0.84" data-reveal style="--i:8"><b>Majagüitas</b><span>Una playa que solo se alcanza por mar.</span></li>
+        <li data-at="0.97" data-reveal style="--i:9"><b>Yelapa</b><span>Ensenada en media luna de agua turquesa.</span></li>
+      </ol>
+      <p class="route-note">Esquema ilustrativo, no está a escala.</p>
+    </div>
+
+    <figure class="route-map" data-reveal="scale">
+      <svg id="routeSvg" viewBox="0 0 520 760" role="img" aria-label="Esquema de la ruta desde Puerto Vallarta hacia el sur: Los Arcos, Playa Ánimas, Quimixto, Las Caletas, Majagüitas y Yelapa">
+        <defs>
+          <linearGradient id="gSea" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#0B2A4A"/>
+            <stop offset="1" stop-color="#08162A"/>
+          </linearGradient>
+          <linearGradient id="gRoute" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFB661"/>
+            <stop offset="1" stop-color="#5FE3D3"/>
+          </linearGradient>
+          <pattern id="gridP" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M40 0H0V40" fill="none" stroke="rgba(180,210,240,.07)" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="520" height="760" rx="28" fill="url(#gSea)"/>
+        <rect width="520" height="760" rx="28" fill="url(#gridP)"/>
+        <!-- tierra -->
+        <path class="land" d="M520 0V760H372C392 700 438 668 416 606C396 552 330 520 350 452C368 392 420 360 392 296C370 246 328 214 352 150C368 106 420 84 400 0z"/>
+        <path class="coast" d="M400 0C420 84 368 106 352 150C328 214 370 246 392 296C420 360 368 392 350 452C330 520 396 552 416 606C438 668 392 700 372 760"/>
+        <!-- ruta -->
+        <path class="route-ghost" id="routeGhost" d="M318 30C296 96 340 130 318 190C296 250 330 280 318 340C306 400 262 420 276 482C290 544 346 568 340 628C334 680 316 710 322 746"/>
+        <path class="route-line" id="routeLine" d="M318 30C296 96 340 130 318 190C296 250 330 280 318 340C306 400 262 420 276 482C290 544 346 568 340 628C334 680 316 710 322 746"/>
+        <g id="routeStops"></g>
+        <g id="routeBoat" class="route-boat">
+          <circle r="16" class="boat-halo"/>
+          <path d="M-7 3h14l-3 6h-8zM0-9v11M0-9l6 8h-6z" fill="#FF8F3F" stroke="#FF8F3F" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </figure>
+  </div>
+</section>
+
+<!-- ═══════════════════════ GALERÍA ═══════════════════════ -->
+<section class="gallery" id="galeria" aria-labelledby="gal-title">
+  <div class="wrap">
+    <h2 id="gal-title" data-reveal>La bahía, de cerca</h2>
+    <p class="lead" data-reveal style="--i:1">Toca una foto para verla en grande.</p>
+
+    <ul class="masonry">
+      <li data-reveal><button class="g-item" type="button" data-full="img/tours/los-arcos-1200.webp"><img src="img/tours/los-arcos-1200.webp" alt="Los Arcos, islotes de roca con selva en la cima rodeados de mar azul" width="1200" height="792" loading="lazy" decoding="async"></button></li>
+      <li data-reveal style="--i:1"><button class="g-item" type="button" data-full="img/tours/yelapa-cascada-1200.webp"><img src="img/tours/yelapa-cascada-1200.webp" alt="Cascada de Yelapa cayendo entre la vegetación" width="1200" height="1600" loading="lazy" decoding="async"></button></li>
+      <li data-reveal style="--i:2"><button class="g-item" type="button" data-full="img/tours/caletas-atardecer-1200.webp"><img src="img/tours/caletas-atardecer-1200.webp" alt="Playa de Las Caletas al atardecer con artista caracterizado de jaguar" width="1200" height="800" loading="lazy" decoding="async"></button></li>
+      <li data-reveal><button class="g-item" type="button" data-full="img/tours/yelapa-1200.webp"><img src="img/tours/yelapa-1200.webp" alt="Ensenada de Yelapa desde lo alto con agua turquesa" width="1200" height="800" loading="lazy" decoding="async"></button></li>
+      <li data-reveal style="--i:1"><button class="g-item" type="button" data-full="img/tours/caletas-velas-568.webp"><img src="img/tours/caletas-velas-568.webp" alt="Hacienda de Las Caletas de noche iluminada con velas" width="568" height="568" loading="lazy" decoding="async"></button></li>
+      <li data-reveal style="--i:2"><button class="g-item" type="button" data-full="img/tours/majahuitas-1200.webp"><img src="img/tours/majahuitas-1200.webp" alt="Panga Majahuitas II con un pelícano sobre el casco" width="1200" height="800" loading="lazy" decoding="async"></button></li>
+      <li data-reveal><button class="g-item" type="button" data-full="img/tours/pirata-fuegos-554.webp"><img src="img/tours/pirata-fuegos-554.webp" alt="Show nocturno con fuegos artificiales en el barco pirata" width="554" height="554" loading="lazy" decoding="async"></button></li>
+      <li data-reveal style="--i:1"><button class="g-item" type="button" data-full="img/tours/quimixto-1200.webp"><img src="img/tours/quimixto-1200.webp" alt="Playa y estero de Quimixto con dos caballos en la orilla" width="1200" height="900" loading="lazy" decoding="async"></button></li>
+      <li data-reveal style="--i:2"><button class="g-item" type="button" data-full="img/tours/los-arcos-cueva-1200.webp"><img src="img/tours/los-arcos-cueva-1200.webp" alt="Entrada de la cueva de Los Arcos a nivel del agua" width="1200" height="900" loading="lazy" decoding="async"></button></li>
+      <li data-reveal><button class="g-item" type="button" data-full="img/tours/atardecer-1200.webp"><img src="img/tours/atardecer-1200.webp" alt="Atardecer naranja sobre el mar de Puerto Vallarta" width="1200" height="800" loading="lazy" decoding="async"></button></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════ RESERVAR (formulario a WhatsApp) ═══════════════════════ -->
+<section class="book" id="reservar" aria-labelledby="book-title">
+  <div class="wrap book-grid">
+
+    <div class="book-copy">
+      <p class="eyebrow" data-reveal>Reserva sin vueltas</p>
+      <h2 id="book-title" data-reveal style="--i:1">Aparta tu lugar en la bahía</h2>
+      <p data-reveal style="--i:2">Elige tu tour, tu fecha y cuántos van. Se abre WhatsApp con todo listo y nosotros te confirmamos.</p>
+
+      <ol class="how" data-reveal style="--i:3">
+        <li><i class="ph ph-ticket" aria-hidden="true"></i><div><b>Elige tu tour</b><span>Cuatro experiencias, una para cada plan.</span></div></li>
+        <li><i class="ph ph-calendar-check" aria-hidden="true"></i><div><b>Dinos fecha y personas</b><span>Calculamos tu total estimado al instante.</span></div></li>
+        <li><i class="ph ph-chat-circle-text" aria-hidden="true"></i><div><b>Confirma por WhatsApp</b><span>Disponibilidad, horario y punto de encuentro.</span></div></li>
+      </ol>
+    </div>
+
+    <form class="book-form glass" id="bookForm" novalidate data-reveal="scale" style="--i:2">
+      <fieldset class="f-tours">
+        <legend>Tu tour</legend>
+        <div class="pick">
+          <label class="pick-o">
+            <input type="radio" name="tour" value="arcos" data-name="Los Arcos, Ánimas y Quimixto" data-price="1200">
+            <span class="pick-c"><b>Los Arcos, Ánimas y Quimixto</b><small>$1,200 MXN por persona</small></span>
+          </label>
+          <label class="pick-o">
+            <input type="radio" name="tour" value="yelapa" data-name="Yelapa y Majagüitas" data-price="1400">
+            <span class="pick-c"><b>Yelapa y Majagüitas</b><small>$1,400 MXN por persona</small></span>
+          </label>
+          <label class="pick-o">
+            <input type="radio" name="tour" value="noche" data-name="Ritmos de la Noche" data-price="3600">
+            <span class="pick-c"><b>Ritmos de la Noche</b><small>$3,600 MXN por persona</small></span>
+          </label>
+          <label class="pick-o">
+            <input type="radio" name="tour" value="pirata" data-name="Barco pirata" data-price="">
+            <span class="pick-c"><b>Barco pirata</b><small>Precio a consultar</small></span>
+          </label>
+          <label class="pick-o">
+            <input type="radio" name="tour" value="ayuda" data-name="Aún no sé cuál elegir" data-price="">
+            <span class="pick-c"><b>Aún no sé cuál</b><small>Recomiéndenme uno</small></span>
+          </label>
+        </div>
+        <p class="f-err" id="err-tour" role="alert"></p>
+      </fieldset>
+
+      <div class="f-row">
+        <div class="f-field">
+          <label for="f-name">Tu nombre</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" placeholder="Ej. María Hernández" required>
+          <p class="f-err" id="err-name" role="alert"></p>
+        </div>
+        <div class="f-field">
+          <label for="f-date">Fecha del tour</label>
+          <input id="f-date" name="date" type="date" required>
+          <p class="f-err" id="err-date" role="alert"></p>
+        </div>
+      </div>
+
+      <div class="f-field">
+        <span class="f-label" id="lbl-pax">Personas</span>
+        <div class="stepper" role="group" aria-labelledby="lbl-pax">
+          <button type="button" id="paxMinus" aria-label="Una persona menos"><i class="ph-bold ph-minus" aria-hidden="true"></i></button>
+          <output id="paxOut" aria-live="polite">2</output>
+          <button type="button" id="paxPlus" aria-label="Una persona más"><i class="ph-bold ph-plus" aria-hidden="true"></i></button>
+        </div>
+      </div>
+
+      <div class="f-field">
+        <label for="f-msg">Comentarios (opcional)</label>
+        <textarea id="f-msg" name="msg" rows="3" placeholder="Ej. Vamos con dos niños, ¿hay tarifa especial?"></textarea>
+      </div>
+
+      <dl class="sum" id="bookSum" aria-live="polite">
+        <div><dt>Tour</dt><dd id="sumTour">Elige uno arriba</dd></div>
+        <div><dt>Fecha</dt><dd id="sumDate">Por definir</dd></div>
+        <div><dt>Personas</dt><dd id="sumPax">2</dd></div>
+        <div class="sum-total"><dt>Total estimado</dt><dd id="sumTotal">$0 MXN</dd></div>
+      </dl>
+
+      <button class="btn btn-sun btn-lg btn-block" type="submit" id="bookBtn">
+        <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>
+        <span class="btn-label">Quiero mi lugar por WhatsApp</span>
+        <span class="btn-spin" aria-hidden="true"></span>
+      </button>
+      <p class="f-note" id="bookNote">Sin pago en línea. Confirmamos disponibilidad, horario y punto de encuentro por WhatsApp.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════════════════ PREGUNTAS FRECUENTES ═══════════════════════ -->
+<section class="faq" id="faq" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <div class="faq-head">
+      <h2 id="faq-title" data-reveal>Antes de zarpar, resolvemos tus dudas</h2>
+      <p data-reveal style="--i:1">Si no encuentras tu respuesta, escríbenos y te contestamos por WhatsApp.</p>
+    </div>
+    <div class="faq-list">
+      <details name="faq" data-reveal>
+        <summary><span>¿Qué incluyen los tours?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></summary>
+        <div class="faq-a"><p>Los tours de día incluyen desayuno, comida y barra libre. Ritmos de la Noche incluye paseo en catamarán al atardecer con barra libre a bordo, cena gourmet frente al mar, barra libre premium durante la cena y el espectáculo ALMA.</p></div>
+      </details>
+      <details name="faq" data-reveal>
+        <summary><span>¿Cuánto cuestan los tours?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></summary>
+        <div class="faq-a"><p>Los Arcos, Ánimas y Quimixto cuesta $1,200 MXN por persona. Yelapa y Majagüitas cuesta $1,400 MXN por persona. Ritmos de la Noche cuesta $3,600 MXN por persona. El barco pirata tiene precio a consultar.</p></div>
+      </details>
+      <details name="faq" data-reveal>
+        <summary><span>¿Cómo reservo mi tour?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></summary>
+        <div class="faq-a"><p>Elige tu tour, la fecha y cuántas personas van en el formulario. Se abre WhatsApp con tu solicitud lista y te confirmamos disponibilidad, horario y punto de encuentro.</p></div>
+      </details>
+      <details name="faq" data-reveal>
+        <summary><span>¿Cuánto dura Ritmos de la Noche?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></summary>
+        <div class="faq-a"><p>Dura aproximadamente 5 horas. Hay que llegar 45 minutos antes de la salida.</p></div>
+      </details>
+      <details name="faq" data-reveal>
+        <summary><span>¿A qué hora salen y dónde es el punto de encuentro?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></summary>
+        <div class="faq-a"><p>Depende del tour y de la fecha. Al enviar tu solicitud por WhatsApp te confirmamos horario, punto de encuentro y disponibilidad.</p></div>
+      </details>
+      <details name="faq" data-reveal>
+        <summary><span>¿Puedo ir con niños?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></summary>
+        <div class="faq-a"><p>Cuéntanos la edad de los niños en tu mensaje y te confirmamos tarifas y condiciones de cada tour.</p></div>
+      </details>
+      <details name="faq" data-reveal>
+        <summary><span>¿Qué pasa si el clima no deja salir?</span><i class="ph-bold ph-plus" aria-hidden="true"></i></summary>
+        <div class="faq-a"><p>Te explicamos las condiciones de cambio y cancelación al momento de cotizar, antes de confirmar tu lugar.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CIERRE ═══════════════════════ -->
+<section class="final" aria-labelledby="final-title">
+  <div class="final-waves" aria-hidden="true">
+    <svg viewBox="0 0 1440 220" preserveAspectRatio="none" focusable="false">
+      <path class="fw fw-3" d="M0 120q90-60 180 0t180 0t180 0t180 0t180 0t180 0t180 0t180 0t180 0t180 0V220H0z"/>
+      <path class="fw fw-2" d="M0 140q90-70 180 0t180 0t180 0t180 0t180 0t180 0t180 0t180 0t180 0t180 0V220H0z"/>
+      <path class="fw fw-1" d="M0 165q90-55 180 0t180 0t180 0t180 0t180 0t180 0t180 0t180 0t180 0t180 0V220H0z"/>
+    </svg>
+  </div>
+  <canvas class="final-bubbles" id="finalBubbles" aria-hidden="true"></canvas>
+  <div class="wrap final-in">
+    <h2 id="final-title" data-reveal>Tu día en el mar ya te está esperando</h2>
+    <p data-reveal style="--i:1">Escríbenos tu fecha y cuántos van. Nosotros hacemos el resto.</p>
+    <div data-reveal style="--i:2">
+      <a class="btn btn-sun btn-xl" href="https://wa.me/" target="_blank" rel="noopener" data-wa data-wa-msg="Hola, estoy listo para reservar un tour de playa en Puerto Vallarta. ¿Qué fechas tienen disponibles?" data-magnetic>
+        <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i><span>Estoy listo para zarpar</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════ PIE ═══════════════════════ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="#inicio" aria-label="Tours Emotions, ir al inicio">
+          <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><use href="#mark"/></svg>
+          <span class="brand-word"><span>Tours</span><b>Emotions</b></span>
+        </a>
+        <p>Experiencias y tours de playa en Puerto Vallarta, Jalisco. Del snorkel en Los Arcos a la noche de ALMA en Las Caletas.</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Tours">
+        <h3>Tours</h3>
+        <a href="#tour-arcos">Los Arcos, Ánimas y Quimixto</a>
+        <a href="#tour-yelapa">Yelapa y Majagüitas</a>
+        <a href="#tour-noche">Ritmos de la Noche</a>
+        <a href="#tour-pirata">Barco pirata</a>
+      </nav>
+
+      <nav class="footer-col" aria-label="Explora">
+        <h3>Explora</h3>
+        <a href="#dia">Un día en el mar</a>
+        <a href="#ruta">La ruta</a>
+        <a href="#galeria">Galería</a>
+        <a href="#faq">Preguntas frecuentes</a>
+      </nav>
+
+      <div class="footer-col">
+        <h3>Contacto</h3>
+        <a href="https://wa.me/" target="_blank" rel="noopener" data-wa data-wa-msg="Hola, quiero información de sus tours de playa en Puerto Vallarta.">WhatsApp</a>
+        <span>Puerto Vallarta, Jalisco, México</span>
+      </div>
+    </div>
+
+    <div class="coming">
+      <h3>Próximamente</h3>
+      <p>Después de los tours vienen hospedaje, renta de yates, renta de autos e información turística: dónde comer, spas y hoteles.</p>
+      <ul class="chips chips--ghost">
+        <li>Hospedaje</li><li>Yates</li><li>Autos</li><li>Guía de la ciudad</li>
+      </ul>
+    </div>
+
+    <details class="credits">
+      <summary>Créditos de las fotos</summary>
+      <p>Las fotos del show ALMA, de Las Caletas y del barco pirata son de Tours Emotions. Las fotos de los lugares son de Wikimedia Commons con licencia libre.</p>
+      <ul>
+        <li>Los Arcos: CC BY-SA 2.5 CA</li>
+        <li>Cueva de Los Arcos: CC BY-SA 4.0</li>
+        <li>Quimixto: CC BY-SA 3.0</li>
+        <li>Costa sur, Playa Ánimas: CC BY 2.0</li>
+        <li>Yelapa: CC BY 4.0</li>
+        <li>Cascada de Yelapa: CC BY 2.0</li>
+        <li>Majahuitas: CC BY 2.0</li>
+        <li>Kayak en la bahía: CC BY-SA 3.0</li>
+        <li>Atardecer: CC BY-SA 2.0</li>
+        <li>Velero: CC BY-SA 3.0</li>
+        <li>Bahía: CC BY-SA 4.0</li>
+      </ul>
+    </details>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Tours Emotions. Todos los derechos reservados.</p>
+      <a href="#inicio" class="to-top">Volver arriba <i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════ WHATSAPP FLOTANTE ═══════════════════════ -->
+<div class="wa-float" id="waFloat">
+  <p class="wa-bubble" id="waBubble" role="note">¿Te ayudo a elegir tu tour?</p>
+  <a class="wa-btn" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" data-wa data-wa-msg="Hola, quiero información de sus tours de playa en Puerto Vallarta.">
+    <i class="ph-fill ph-whatsapp-logo" aria-hidden="true"></i>
+  </a>
+</div>
+
+<!-- Lightbox de la galería -->
+<dialog class="lightbox" id="lightbox" aria-label="Foto ampliada">
+  <button class="lb-close" type="button" id="lbClose" aria-label="Cerrar"><i class="ph-bold ph-x" aria-hidden="true"></i></button>
+  <button class="lb-nav lb-prev" type="button" id="lbPrev" aria-label="Foto anterior"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></button>
+  <img id="lbImg" alt="">
+  <button class="lb-nav lb-next" type="button" id="lbNext" aria-label="Foto siguiente"><i class="ph-bold ph-arrow-right" aria-hidden="true"></i></button>
+</dialog>
+
+<noscript>
+  <style>.loader{display:none!important}</style>
+</noscript>
+</body>
+</html>
