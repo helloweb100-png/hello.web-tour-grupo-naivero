@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   TOURS EMOTIONS · Puerto Vallarta
+   TOUR EMOTIONS PV · Puerto Vallarta
    Hoja de estilos · mobile-first · tema oscuro único (noche en la bahía)
 
    Sistema
@@ -462,6 +462,7 @@ html.menu-open .wa-float { opacity: 0; pointer-events: none; }
 }
 .panel--night { background: linear-gradient(160deg, rgba(60, 70, 170, .28), rgba(255, 255, 255, .02) 65%); }
 .panel--pirate { background: linear-gradient(160deg, rgba(40, 70, 160, .22), rgba(255, 255, 255, .02) 65%); }
+.panel--more { background: linear-gradient(160deg, rgba(95, 227, 211, .08), rgba(255, 255, 255, .015)); }
 .panel-media { aspect-ratio: 4 / 3; overflow: hidden; }
 .panel-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s var(--ease); }
 .panel:hover .panel-media img { transform: scale(1.06); }
@@ -635,6 +636,97 @@ html.menu-open .wa-float { opacity: 0; pointer-events: none; }
 .stop.is-on circle { fill: var(--sun); stroke: var(--sun); }
 .stop.is-on text { fill: var(--ink); }
 .boat-halo { fill: rgba(255, 143, 63, .2); transform-box: fill-box; transform-origin: center; animation: pulse 2.2s ease-out infinite; }
+
+/* ───────────────────────── 15b. SERVICIOS: RESUMEN, YATES, VIDA NOCTURNA, HOSPEDAJE ───────────────────────── */
+.cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+.section-note { margin-top: 14px; color: var(--dim); font-size: .84rem; }
+
+/* Resumen de servicios (después de las cifras) */
+.services { padding: 0 0 clamp(72px, 10vw, 120px); background: var(--abyss); }
+.services h2 { margin-top: 12px; max-width: 16ch; }
+.svc-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 44px; }
+.svc-grid > li { display: flex; }
+.svc {
+  position: relative; isolation: isolate; overflow: hidden; flex: 1;
+  display: flex; flex-direction: column; gap: 12px; min-height: 250px;
+  padding: 24px 24px 22px; border-radius: var(--r-lg); border: 1px solid var(--line);
+  background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .015));
+  transition: border-color .4s, background .4s;
+}
+.svc:hover { border-color: rgba(255, 143, 63, .5); background: linear-gradient(160deg, rgba(255, 143, 63, .1), rgba(255, 255, 255, .02)); }
+.svc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: auto; padding-bottom: 28px; }
+.svc-top i { width: 52px; height: 52px; display: grid; place-items: center; font-size: 1.6rem; border-radius: var(--r-sm); border: 1px solid var(--line-2); background: rgba(255, 255, 255, .05); }
+.svc-n { font-family: var(--mono); font-size: .78rem; color: var(--dim); }
+.svc h3 { font-size: clamp(1.35rem, 1.1rem + .8vw, 1.7rem); letter-spacing: -.03em; }
+.svc p { font-size: .95rem; }
+.svc-go { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font-weight: 600; font-size: .92rem; color: var(--ink); transition: color .3s; }
+.svc-go i { transition: transform .5s var(--ease); }
+.svc:hover .svc-go { color: var(--sun); }
+.svc:hover .svc-go i { transform: translate(3px, -3px); }
+
+/* Renta de yates */
+.yacht { padding: clamp(72px, 10vw, 140px) 0; background: linear-gradient(180deg, var(--abyss), var(--deep) 14%, var(--deep) 86%, var(--abyss)); }
+.yacht-grid { display: grid; gap: 48px; align-items: center; }
+.yacht-fig { overflow: hidden; aspect-ratio: 4 / 3; border-radius: var(--r-lg); border: 1px solid var(--line-2); box-shadow: 0 40px 100px -50px rgba(95, 227, 211, .35); }
+.yacht-fig img { width: 100%; height: 100%; object-fit: cover; }
+.yacht-copy h2 { margin: 12px 0 0; max-width: 14ch; }
+.yacht-copy .chips { margin-top: 26px; }
+.yacht-copy .how { margin-top: 28px; }
+
+/* Vida nocturna y patrocinadores */
+.nightlife {
+  position: relative; isolation: isolate; overflow: hidden;
+  padding: clamp(72px, 10vw, 140px) 0;
+  background:
+    radial-gradient(90% 60% at 100% 0%, rgba(44, 45, 132, .45), transparent 60%),
+    radial-gradient(70% 50% at 0% 100%, rgba(255, 143, 63, .12), transparent 60%),
+    var(--abyss);
+}
+.nl-head h2 { margin: 12px 0 0; max-width: 18ch; }
+.nl-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 44px; }
+.nl-card {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; gap: 10px; align-content: start; padding: 24px;
+  border-radius: var(--r-lg); border: 1px solid var(--line);
+  background: linear-gradient(160deg, rgba(60, 70, 170, .26), rgba(255, 255, 255, .02) 70%);
+}
+.nl-card i { font-size: 1.9rem; color: var(--ink); }
+.nl-card h3 { font-size: 1.3rem; }
+.nl-card p { font-size: .93rem; }
+.sponsors { margin-top: 28px; padding: clamp(22px, 3vw, 40px); border-radius: var(--r-lg); border: 1px solid var(--line-2); background: rgba(255, 255, 255, .03); }
+.sponsors-head h3 { font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem); letter-spacing: -.03em; }
+.sponsors-head p { margin-top: 10px; max-width: 58ch; }
+.sponsors-slots { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 26px; }
+.sponsors-slots li {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  min-height: 104px; padding: 14px; text-align: center;
+  border-radius: var(--r-md); border: 1px dashed var(--line-2);
+  color: var(--dim); font-family: var(--mono); font-size: .76rem;
+}
+.sponsors-slots i { font-size: 1.6rem; }
+
+/* Hospedaje y Airbnb */
+.stay { padding: clamp(72px, 10vw, 140px) 0; background: var(--abyss); }
+.stay-head h2 { margin: 12px 0 0; max-width: 16ch; }
+.stay-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 44px; }
+.stay-card {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; gap: 14px; align-content: start; padding: clamp(24px, 3vw, 36px);
+  border-radius: var(--r-lg); border: 1px solid var(--line);
+  background: linear-gradient(145deg, #14406E, #0B1D33 65%);
+}
+.stay-card:nth-child(2) { background: linear-gradient(145deg, #2C2D84, #0B1D33 72%); }
+.stay-card::before {
+  content: ""; position: absolute; z-index: -1; right: -20%; top: -30%; width: 70%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, rgba(95, 227, 211, .2), transparent 65%);
+  animation: float 9s ease-in-out infinite;
+}
+.stay-card > i { font-size: 2.2rem; color: var(--ink); }
+.stay-card h3 { font-size: clamp(1.7rem, 1.2rem + 1.6vw, 2.3rem); letter-spacing: -.04em; }
+.stay-card > p { color: var(--soft); max-width: 44ch; }
+.stay-list { display: grid; gap: 10px; margin-top: 6px; }
+.stay-list li { position: relative; padding-left: 26px; color: var(--ink); font-size: .95rem; }
+.stay-list li::before { content: ""; position: absolute; left: 0; top: .55em; width: 9px; height: 9px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 0 4px rgba(255, 143, 63, .16); }
 
 /* ───────────────────────── 16. GALERÍA ───────────────────────── */
 .gallery { padding: clamp(72px, 10vw, 140px) 0; background: linear-gradient(180deg, var(--abyss), var(--deep)); }
@@ -847,8 +939,9 @@ html.reveal-ready [data-reveal].is-in { opacity: 1; transform: none; }
   .hero-bars span { display: block; }
   .panel-actions { flex-direction: row; flex-wrap: wrap; }
   .pick { grid-template-columns: 1fr 1fr; }
-  .pick-o:last-child { grid-column: 1 / -1; }
   .f-row { grid-template-columns: 1fr 1fr; }
+  .svc-grid, .nl-grid { grid-template-columns: 1fr 1fr; }
+  .sponsors-slots { grid-template-columns: repeat(4, 1fr); }
   .masonry { columns: 3; column-gap: 16px; }
   .masonry li { margin-bottom: 16px; }
   .seq-timeline span { display: block; }
@@ -859,10 +952,11 @@ html.reveal-ready [data-reveal].is-in { opacity: 1; transform: none; }
 @media (min-width: 768px) {
   /* Tours sin pan horizontal (tabletas y movimiento reducido): foto a la izquierda, texto a la derecha */
   .tours-pin:not(.is-pan) .panel { grid-template-columns: 5fr 7fr; }
-  .tours-pin:not(.is-pan) .panel--help { grid-template-columns: 1fr; }
+  .tours-pin:not(.is-pan) .panel--help, .tours-pin:not(.is-pan) .panel--more { grid-template-columns: 1fr; }
   .tours-pin:not(.is-pan) .panel-media { position: relative; aspect-ratio: auto; min-height: 380px; }
   .tours-pin:not(.is-pan) .panel-media img { position: absolute; inset: 0; }
-  .tours-pin:not(.is-pan) .panel--help .panel-body { padding: 44px; }
+  .tours-pin:not(.is-pan) .panel--help .panel-body, .tours-pin:not(.is-pan) .panel--more .panel-body { padding: 44px; }
+  .stay-grid { grid-template-columns: 1fr 1fr; }
 
   .hero-title { font-size: clamp(3.4rem, 7.2vw + .6rem, 6rem); }
   .hero-badge {
@@ -919,7 +1013,7 @@ html.reveal-ready [data-reveal].is-in { opacity: 1; transform: none; }
   .tours-pin.is-pan .tours-viewport { width: 100%; margin: 0; flex: 1; min-height: 0; display: flex; align-items: center; }
   .tours-pin.is-pan .tours-track { display: flex; width: max-content; height: 100%; gap: 26px; padding: 0 var(--gutter); will-change: transform; }
   .tours-pin.is-pan .panel { flex: 0 0 auto; width: min(88vw, 1020px); height: 100%; max-height: 640px; align-self: center; grid-template-columns: 5fr 7fr; }
-  .tours-pin.is-pan .panel--help { width: min(72vw, 520px); grid-template-columns: 1fr; }
+  .tours-pin.is-pan .panel--help, .tours-pin.is-pan .panel--more { width: min(72vw, 520px); grid-template-columns: 1fr; }
   .tours-pin.is-pan .panel-media { aspect-ratio: auto; height: 100%; }
   .tours-pin.is-pan .panel-body { padding: clamp(18px, 3vh, 30px) clamp(20px, 2.4vw, 34px); gap: clamp(8px, 1.6vh, 14px); }
   .tours-pin.is-pan .panel h3 { font-size: clamp(1.8rem, 5vh, 2.9rem); }
@@ -945,6 +1039,9 @@ html.reveal-ready [data-reveal].is-in { opacity: 1; transform: none; }
 
   .route-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 88px; }
   .route-map { position: sticky; top: 92px; }
+
+  .svc-grid, .nl-grid { grid-template-columns: repeat(4, 1fr); }
+  .yacht-grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 88px; }
 
   .masonry { column-gap: 20px; }
   .masonry li { margin-bottom: 20px; }

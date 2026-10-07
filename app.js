@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   TOURS EMOTIONS · app.js
+   TOUR EMOTIONS PV · app.js
    Vanilla JS, sin dependencias. Todo es mejora progresiva: si algo falla,
    el contenido sigue visible gracias al HTML estático.
 
@@ -24,7 +24,7 @@
 
   /* ─────────────────────────── 0. CONFIGURACIÓN ─────────────────────────── */
   const CONFIG = {
-    brand: 'Tours Emotions',
+    brand: 'Tour Emotions PV',
     /* NÚMERO DE WHATSAPP del negocio, solo dígitos con lada de país.
        México: '52' + 10 dígitos. Ejemplo: '523221234567'.
        Mientras esté vacío, los botones abren WhatsApp con el mensaje listo
@@ -41,7 +41,7 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   const mqPan = window.matchMedia('(min-width: 1024px)');
-  const safe = (fn) => { try { return fn(); } catch (err) { console.warn('[Tours Emotions]', err); } };
+  const safe = (fn) => { try { return fn(); } catch (err) { console.warn('[Tour Emotions PV]', err); } };
   const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 
   function watch(el, cb, margin = '120px') {
@@ -912,7 +912,7 @@
 
   function initWhatsApp() {
     if (String(CONFIG.whatsapp).replace(/\D/g, '').length < 10) {
-      console.info('[Tours Emotions] Falta el número de WhatsApp: edita CONFIG.whatsapp en app.js. Mientras tanto los botones abren WhatsApp para elegir contacto.');
+      console.info('[Tour Emotions PV] Falta el número de WhatsApp: edita CONFIG.whatsapp en app.js. Mientras tanto los botones abren WhatsApp para elegir contacto.');
     }
     $$('[data-wa]').forEach((a) => { a.href = waURL(a.dataset.waMsg || ''); });
 
@@ -976,7 +976,7 @@
     function validate() {
       let first = null;
       const bad = (id, field, msg, focusEl) => { setErr(id, field, msg); if (!first) first = focusEl || field; };
-      if (!selected()) bad('tour', null, 'Elige el tour que te interesa.', radios[0]); else setErr('tour', null, '');
+      if (!selected()) bad('tour', null, 'Elige el plan que te interesa.', radios[0]); else setErr('tour', null, '');
       if (nameEl.value.trim().length < 3) bad('name', nameEl, 'Escribe tu nombre para saludarte por WhatsApp.'); else setErr('name', nameEl, '');
       if (!dateEl.value) bad('date', dateEl, 'Elige la fecha en la que quieres ir.');
       else if (dateEl.value < dateEl.min) bad('date', dateEl, 'Elige una fecha de hoy en adelante.');
@@ -1005,9 +1005,14 @@
       if (first) { first.focus({ preventScroll: false }); return; }
       const r = selected();
       const price = r.dataset.price ? +r.dataset.price : 0;
+      /* Cada tipo de plan abre la conversación de forma natural: reservar un tour, cotizar un servicio o pedir ayuda */
+      const kind = r.dataset.kind;
+      const ask = kind === 'help'
+        ? 'Aún no sé qué elegir, ¿me recomiendan algo?'
+        : (kind === 'quote' ? 'Quiero cotizar: ' : 'Quiero reservar el tour: ') + r.dataset.name + '.';
       const lines = [
         'Hola, soy ' + nameEl.value.trim() + '.',
-        'Quiero reservar: ' + r.dataset.name + '.',
+        ask,
         'Fecha: ' + dateLong() + '.',
         'Personas: ' + pax + '.',
         price ? 'Total estimado: ' + money(price * pax) + ' MXN.' : '',
