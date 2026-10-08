@@ -16,6 +16,7 @@
    9. Secuencia "Un día en el mar" (frame = scroll)
    10. Noche, ruta SVG y parallax
    11. Galería y lightbox
+   11b. Promos: carrusel
    12. Formulario y enlaces de WhatsApp
    13. Microinteracciones: tilt, imán, spotlight, ripple
    ═══════════════════════════════════════════════════════════════════ */
@@ -343,7 +344,7 @@
         float c = caustic(uv * 0.9, t);
         float d = distance(gl_FragCoord.xy / uRes, uMouse);
         c += smoothstep(0.28, 0.0, d) * 0.35 * caustic(uv * 1.5 + 0.3, t * 1.3);
-        vec3 col = vec3(0.36, 0.92, 0.96) * c;
+        vec3 col = vec3(0.16, 0.85, 0.89) * c;
         gl_FragColor = vec4(col, 1.0);
       }`;
 
@@ -896,6 +897,99 @@
     });
   }
 
+  /* ─────────────────────── 11b. PROMOS: CARRUSEL ───────────────────────
+     Scroll-snap nativo (funciona con dedo, rueda y teclado) más flechas, puntos y
+     rotación automática. La rotación se pausa con el mouse, el foco, la pestaña oculta,
+     fuera de pantalla y con el botón de pausa. Los puntos y la numeración "1 de N" se
+     generan según los bloques .promo que haya en el HTML. */
+  function initPromos() {
+    const box = $('#promoCarousel');
+    const track = $('#promoTrack');
+    if (!box || !track) return;
+    const slides = $$('.promo', track);
+    const n = slides.length;
+    if (n < 2) return;
+    const dotsEl = $('#promoDots');
+    const playBtn = $('#promoPlay');
+    const INTERVAL = 6500;
+    let cur = 0;
+    let timer = 0;
+    let userPaused = false;
+    let hover = false;
+    let focus = false;
+    let visible = false;
+    let raf = 0;
+
+    slides.forEach((s, i) => s.setAttribute('aria-label', (i + 1) + ' de ' + n));
+    const dots = slides.map((_, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'promo-dot';
+      b.setAttribute('aria-label', 'Ir a la promoción ' + (i + 1));
+      b.addEventListener('click', () => go(i));
+      dotsEl.append(b);
+      return b;
+    });
+
+    const setCur = (i) => {
+      cur = i;
+      dots.forEach((d, k) => {
+        d.classList.toggle('is-on', k === i);
+        if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+      });
+    };
+
+    const stop = () => { clearInterval(timer); timer = 0; };
+    const canRun = () => !userPaused && !hover && !focus && visible && !document.hidden;
+    const restart = () => {
+      stop();
+      if (reduced || userPaused) return;
+      timer = setInterval(() => { if (canRun()) go(cur + 1); }, INTERVAL);
+    };
+
+    /* El punto activo se calcula del scroll real: así también responde al deslizar con el dedo */
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const step = slides[1].offsetLeft - slides[0].offsetLeft || track.clientWidth;
+        const i = clamp(Math.round(track.scrollLeft / step), 0, n - 1);
+        if (i !== cur) setCur(i);
+      });
+    };
+    track.addEventListener('scroll', onScroll, { passive: true });
+
+    function go(i) {
+      const k = (i + n) % n;
+      track.scrollTo({ left: slides[k].offsetLeft - slides[0].offsetLeft, behavior: reduced ? 'auto' : 'smooth' });
+      restart();
+    }
+
+    $('#promoPrev').addEventListener('click', () => go(cur - 1));
+    $('#promoNext').addEventListener('click', () => go(cur + 1));
+
+    /* Pausa y reanudación (WCAG 2.2.2: todo lo que se mueve solo debe poder detenerse) */
+    const syncPlay = () => {
+      playBtn.setAttribute('aria-label', userPaused ? 'Reanudar el cambio automático' : 'Pausar el cambio automático');
+      $('i', playBtn).className = 'ph-bold ' + (userPaused ? 'ph-play' : 'ph-pause');
+      track.setAttribute('aria-live', userPaused || reduced ? 'polite' : 'off');
+    };
+    if (reduced) playBtn.hidden = true;
+    playBtn.addEventListener('click', () => { userPaused = !userPaused; syncPlay(); restart(); });
+
+    box.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') hover = true; });
+    box.addEventListener('pointerleave', () => { hover = false; });
+    box.addEventListener('focusin', () => { focus = true; });
+    box.addEventListener('focusout', (e) => { if (!box.contains(e.relatedTarget)) focus = false; });
+    /* Al tocar o arrastrar, el siguiente cambio automático espera un intervalo completo */
+    track.addEventListener('pointerdown', restart, { passive: true });
+    watch(box, (v) => { visible = v; }, '0px');
+
+    setCur(0);
+    syncPlay();
+    restart();
+    box.classList.add('is-ready');
+  }
+
   /* ───────────────── 12. WHATSAPP Y FORMULARIO ───────────────── */
   function waURL(text) {
     const n = String(CONFIG.whatsapp).replace(/\D/g, '');
@@ -963,7 +1057,8 @@
       sumDate.textContent = dateLong() || 'Por definir';
       sumPax.textContent = String(pax);
       paxOut.textContent = String(pax);
-      sumTotal.textContent = price ? money(price * pax) + ' MXN' : r ? 'A confirmar' : '$0 MXN';
+      /* data-adult: el precio publicado es de adulto; los niños tienen tarifa propia y se confirma por WhatsApp */
+      sumTotal.textContent = price ? money(price * pax) + ' MXN' + (r.hasAttribute('data-adult') ? ' (tarifa adulto)' : '') : r ? 'A confirmar' : '$0 MXN';
     }
 
     const setErr = (id, field, msg) => {
@@ -1015,7 +1110,7 @@
         ask,
         'Fecha: ' + dateLong() + '.',
         'Personas: ' + pax + '.',
-        price ? 'Total estimado: ' + money(price * pax) + ' MXN.' : '',
+        price ? 'Total estimado: ' + money(price * pax) + ' MXN' + (r.hasAttribute('data-adult') ? ' (con tarifa de adulto, confirmen la de niños).' : '.') : '',
         msgEl.value.trim() ? 'Comentarios: ' + msgEl.value.trim().slice(0, 300) : '',
         '¿Tienen disponibilidad?',
       ].filter(Boolean);
@@ -1105,6 +1200,7 @@
     safe(initParallax);
     safe(initRoute);
     safe(initGallery);
+    safe(initPromos);
     safe(initForm);
     safe(initMicro);
 
@@ -1112,7 +1208,7 @@
     const caustics = safe(() => initCaustics($('#caustics')));
     const fx = [];
     const heroC = $('#heroParticles');
-    if (heroC && !reduced) fx.push(new Particles(heroC, { kind: 'bubble', color: '190,245,240', density: 0.00007, min: 14, max: 70, size: [1.5, 7], speed: [14, 46], pointer: true }));
+    if (heroC && !reduced) fx.push(new Particles(heroC, { kind: 'bubble', color: '170,240,245', density: 0.00007, min: 14, max: 70, size: [1.5, 7], speed: [14, 46], pointer: true }));
     const embC = $('#embers');
     if (embC && !reduced) fx.push(new Particles(embC, { kind: 'ember', color: '255,150,70', density: 0.00005, min: 16, max: 60, size: [1.4, 5], speed: [10, 40] }));
     const finC = $('#finalBubbles');
