@@ -1174,6 +1174,11 @@ html.reveal-ready [data-reveal].is-in { opacity: 1; transform: none; }
   /* Declaración con palabras que se encienden */
   html.js .statement-pin { height: 240vh; }
   html.js .statement-sticky { position: sticky; top: 0; height: 100dvh; display: grid; align-items: center; padding: 0; }
+  /* El texto es largo: en pantallas bajas se achica para que quepa sin quedar bajo la barra */
+  html.js .statement-text { font-size: clamp(1.35rem, min(1rem + 3.6vw, (100svh - 170px) / 10), 3.9rem); }
+  @media (max-width: 700px) {
+    html.js .statement-text { font-size: clamp(1.35rem, min(1rem + 3.6vw, (100svh - 170px) / 19), 3.9rem); }
+  }
 
   /* Secuencia "Un día en el mar" controlada por scroll */
   html.js .seq-pin { height: 560vh; }
